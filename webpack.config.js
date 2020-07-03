@@ -1,4 +1,6 @@
 const HtmlWebPackPlugin = require("html-webpack-plugin")
+const dotenv = require("dotenv")
+const webpack = require("webpack")
 
 module.exports = {
   module: {
@@ -24,9 +26,16 @@ module.exports = {
     new HtmlWebPackPlugin({
       template: "./src/index.html",
       filename: "./index.html"
+    }),
+    new webpack.DefinePlugin({
+      // "process.env": JSON.stringify(dotenv.config().parsed)
+      "process.env": dotenv.config().parsed
     })
   ],
   devServer: {
     port: 3000
+  },
+  node: {
+    fs: "empty"
   }
 }
