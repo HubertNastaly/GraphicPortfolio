@@ -1,10 +1,10 @@
 import React from 'react';
 
 export const Art = (props) => {
-
-  const { id, server, secret, farm } = props.artData
-
-  const artUrl = `https://farm${farm}.staticflickr.com/${server}/${id}_${secret}.png`
-
-  return <img src={artUrl}></img>
+  const { url, displayFullImage } = props
+  return (
+    <div className="art" onClick={() => displayFullImage(url)}>
+      <img src={url}></img>
+    </div>
+  )
 }

@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { apiKey, userId, photosetId } from "./config"
 import { Art } from "./Art"
+import { FullImage } from "./FullImage"
 
 export const Gallery = () => {
 
   const [arts, setArts] = useState([])
+  const [fullImage, setFullImage] = useState(null)
 
   const createPhotosetUrl = () => {
 
@@ -22,6 +24,11 @@ export const Gallery = () => {
     return apiUrl
   }
 
+  const createArtUrl = (art) => {
+    const { id, server, secret, farm } = art
+    return `https://farm${farm}.staticflickr.com/${server}/${id}_${secret}_c.png`
+  }
+
   const fetchPhotos = () => {
 
     const url = createPhotosetUrl()
@@ -32,7 +39,6 @@ export const Gallery = () => {
         throw new Error("Something went wrong")
       })
       .then(data => {
-        console.log(data)
         const artCollection = data.photoset.photo.map(art => {
           return {
             id: art.id,
@@ -48,9 +54,13 @@ export const Gallery = () => {
 
   !arts.length && fetchPhotos()
 
-  return <main>
-    {arts.map(art =>
-      <Art key={art.id} artData={art}></Art>
-    )}
-  </main>
+  return (<div>
+    {fullImage && <FullImage url={fullImage} hideFullImage={() => setFullImage(null)}></FullImage>}
+    <main>
+      {arts.map(art =>
+        <Art key={art.id} url={createArtUrl(art)} displayFullImage={(url) => { !fullImage && setFullImage(url) }}></Art>
+      )}
+    </main>
+  </div>)
+
 }
