@@ -1,9 +1,14 @@
 import React, { Component } from "react"
 import ReactDOM from "react-dom"
-import { apiKey } from "./config"
+import { Gallery } from "./Gallery"
 
 export const App = () => {
-  return <span>Hello world</span>
+  return (
+    <div>
+      <span>Hello world</span>
+      <Gallery></Gallery>
+    </div>
+  )
 }
 
 const wrapper = document.getElementById("container")
