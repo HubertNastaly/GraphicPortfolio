@@ -1,6 +1,145 @@
+$text-color: black;
+$bg-color: #f0f0f0;
+$perspective: 100px;
+
 * {
   padding: 0;
   margin: 0;
+}
+
+:root{
+  font-family: 'Raleway', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  color: $text-color;
+  --header-height: 1080;
+  --header-width: 1920;
+  background-color: $bg-color;
+}
+
+// wrapper for whole page
+#container > div{
+  width: 100%;
+  height: 100vh;
+
+  overflow-y: scroll;
+  overflow-x: hidden;
+  position: relative;
+
+  perspective: $perspective;
+  perspective-origin: 0 0;
+
+  &> img{
+    position: absolute;
+    //transform: scale(calc(var(--header-height)/ 1080));
+    transform: scale(calc(var(--header-width) / 1920));
+    transform-origin: 0 0;
+  }
+
+  &> img:nth-of-type(1){
+    z-index: -1;
+    transform: translateZ(-$perspective * 0) scale( calc( (1 + 0) * var(--header-width) / 1920) );
+  }
+  &> img:nth-of-type(2){
+    z-index: -2;
+    transform: translateZ(-$perspective * 0.5) scale( calc( (1 + 0.5) * var(--header-width) / 1920) );
+  }
+  &> img:nth-of-type(3){
+    z-index: -3;
+    transform: translateZ(-$perspective * 1) scale( calc( (1 + 1) * var(--header-width) / 1920) );
+  }
+  &> img:nth-of-type(4){
+    z-index: -4;
+    transform: translateZ(-$perspective * 1.5) scale( calc( (1 + 1.5) * var(--header-width) / 1920) );
+  }
+  &> img:nth-of-type(5){
+    z-index: -5;
+    transform: translateZ(-$perspective * 2) scale( calc( (1 + 2) * var(--header-width) / 1920) );
+  }
+  &> h1{
+    position: absolute;
+    margin: 0 auto;
+    font-size: 6rem;
+    z-index: 3;
+    transform: translateZ(-$perspective * 100) scale(1 + 100);
+  }
+}
+
+h2{
+  font-size: 2rem;
+  font-weight: 800;
+}
+
+// header{
+//   width: 100%;
+//   height: 100vh;
+//   overflow: hidden;
+
+//   &>div{
+//     width: 1920px;
+//     height: 1080px;
+
+//     perspective-origin: center;
+//     perspective: 100px;
+
+//     transform: scale(calc(var(--header-height)/ 1080));
+//     transform-origin: 0 0;
+
+//     position: relative;
+//     overflow: scroll;
+    
+//     &>img,&>h1{
+//       position: absolute;
+//     }
+//     &> img:nth-of-type(1){
+//       left: 0;
+//       bottom: 0;
+//       z-index: 5;
+//       transform: translateZ($perspective * 0) scale(1 + 0);
+//     }
+//     &> img:nth-of-type(2){
+//       right: 0;
+//       bottom: 0;
+//       z-index: 4;
+//       transform: translateZ($perspective * 0.5); //scale(1 + 0.5);
+//     }
+//     &> img:nth-of-type(3){
+//       left: 0;
+//       top: 43%;
+//       z-index: 3;
+//       transform: translateZ($perspective * 1) scale(1 + 1);
+//     }
+//     &> img:nth-of-type(4){
+//       left: 0;
+//       top: 27%;
+//       z-index: 2;
+//       transform: translateZ($perspective * 1.5) scale(1 + 1.5);
+//     }
+//     &> img:nth-of-type(5){
+//       left: 0;
+//       bottom: 0;
+//       z-index: 1;
+//       transform: translateZ($perspective * 2) scale(1 + 2);
+//     }
+//     &> h1{
+//       top: 30%;
+//       left: 20%;
+//       font-size: 6rem;
+//       z-index: 3;
+//     }
+//   }
+// }
+
+
+p{
+  line-height: 1.5rem;
+}
+
+.aboutMe{
+  margin-left: 5%;
+  margin-right: 5%;
+  max-width: 500px;
+  clear: both;
 }
 
 .art{
@@ -38,12 +177,28 @@
   width: 100%;
 }
 
-main{
+.gallery{
   display: grid;
   grid-template-columns: 1fr 1fr;
   column-gap: 5vw;
   row-gap: 5vw;
+
+  width: 100%;
+  margin-top: 100px;
+}
+
+main{
+  box-sizing: border-box;
+  padding-top: 50px;
   width: 90%;
   max-width: 720px;
   margin: 0 auto;
+}
+
+.mainWrapper{
+  background-color: $bg-color;
+  width: 100%;
+  position: absolute;
+  top: 100vh;
+  z-index: 0;
 }
