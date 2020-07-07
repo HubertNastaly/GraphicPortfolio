@@ -11,5 +11,4 @@ const adjustHeader = () => {
 window.addEventListener("resize", adjustHeader)
 window.addEventListener("load", adjustHeader)
 
-
 render(<App />, document.getElementById("container"))

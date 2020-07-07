@@ -9,11 +9,11 @@ export const Tools = () => {
       <div>
         <div>
           <img src={psIcon}></img>
-          <h4>Adobe Photoshop</h4>
+          <h4>ADOBE PHOTOSHOP</h4>
         </div>
         <div>
           <img src={adIcon}></img>
-          <h4>Affinity Designer</h4>
+          <h4>AFFINITY DESIGNER</h4>
         </div>
       </div>
     </section>
