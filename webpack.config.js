@@ -1,8 +1,14 @@
 const HtmlWebPackPlugin = require("html-webpack-plugin")
 const dotenv = require("dotenv")
 const webpack = require("webpack")
+const path = require("path")
 
 module.exports = {
+  entry: "./src/index.js",
+  output: {
+    filename: "[name].bundle.js",
+    path: path.resolve(__dirname, "dist")
+  },
   module: {
     rules: [
       {
@@ -45,7 +51,6 @@ module.exports = {
       filename: "./index.html"
     }),
     new webpack.DefinePlugin({
-      // "process.env": JSON.stringify(dotenv.config().parsed)
       "process.env": dotenv.config().parsed
     })
   ],
