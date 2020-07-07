@@ -54,13 +54,13 @@ export const Gallery = () => {
 
   !arts.length && fetchPhotos()
 
-  return (<section>
+  return (<div>
     {fullImage && <FullImage url={fullImage} hideFullImage={() => setFullImage(null)}></FullImage>}
-    <div className="gallery">
+    <section className="gallery">
       {arts.map(art =>
         <Art key={art.id} url={createArtUrl(art)} displayFullImage={(url) => { !fullImage && setFullImage(url) }}></Art>
       )}
-    </div>
-  </section>)
+    </section>
+  </div>)
 
 }
