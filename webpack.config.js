@@ -50,8 +50,14 @@ module.exports = {
       template: "./src/index.html",
       filename: "./index.html"
     }),
+    // This below works, but there is a netlify deploy problem
+    // new webpack.DefinePlugin({
+    //   "process.env": dotenv.config().parsed
+    // })
     new webpack.DefinePlugin({
-      "process.env": dotenv.config().parsed
+      "REACT_APP_API_KEY": '"bb6301d8913f327572239c8131101cf5"',
+      "REACT_APP_PHOTOSET_ID": '"72157713388874737"',
+      "REACT_APP_USER_ID": '"187314355@N02"'
     })
   ],
   devServer: {
