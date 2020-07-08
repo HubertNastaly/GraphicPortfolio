@@ -3,10 +3,11 @@ import { apiKey, userId, photosetId } from "./config"
 import { Art } from "./Art"
 import { FullImage } from "./FullImage"
 
-export const Gallery = () => {
+export const Gallery = (props) => {
 
   const [arts, setArts] = useState([])
-  const [fullImage, setFullImage] = useState(null)
+  // const [fullImage, setFullImage] = useState(null)
+  const { fullImage, setFullImage } = props
 
   const createPhotosetUrl = () => {
 
@@ -44,7 +45,8 @@ export const Gallery = () => {
             id: art.id,
             server: art.server,
             secret: art.secret,
-            farm: art.farm
+            farm: art.farm,
+            title: art.title
           }
         })
         setArts(artCollection)
@@ -58,9 +60,9 @@ export const Gallery = () => {
     {fullImage && <FullImage url={fullImage} hideFullImage={() => setFullImage(null)}></FullImage>}
     <section className="gallery">
       {arts.map(art =>
-        <Art key={art.id} url={createArtUrl(art)} displayFullImage={(url) => { !fullImage && setFullImage(url) }}></Art>
+        <Art key={art.id} url={createArtUrl(art)} displayFullImage={(url) => { !fullImage && setFullImage(url) }} title={art.title}></Art>
       )}
     </section>
-  </div>)
+  </div >)
 
 }

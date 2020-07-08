@@ -14,6 +14,8 @@ export const App = () => {
 
   useEffect(() => setupAnimationsOnScroll(), [])
 
+  const [fullImage, setFullImage] = useState(null)
+
   const setupAnimationsOnScroll = () => {
     const scroll =
       window.requestAnimationFrame ||
@@ -50,7 +52,7 @@ export const App = () => {
       <div className="mainWrapper">
         <main>
           <AboutMe></AboutMe>
-          <Gallery></Gallery>
+          <Gallery fullImage={fullImage} setFullImage={setFullImage}></Gallery>
           <Tools></Tools>
         </main>
         <Footer></Footer>
