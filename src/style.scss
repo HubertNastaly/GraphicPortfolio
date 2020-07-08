@@ -1,10 +1,15 @@
 $text-color: black;
 $bg-color: #f0f0f0;
+
 $perspective: 100px;
+
 $init-header-width: 1920;
 $init-header-height: 1080;
+
 $header-scale: calc( var(--client-width) / #{$init-header-width} );
 $header-height: calc( #{$init-header-height}px * #{$header-scale} );
+
+$mobile-size: 767px;
 
 * {
   padding: 0;
@@ -70,11 +75,11 @@ $header-height: calc( #{$init-header-height}px * #{$header-scale} );
     transform: translateZ(-$perspective * 3) scale( calc( (1 + 3) ) );
   }
   & h1{
-    font-size: 4rem;
+    font-size: 3rem;
     text-align: center;
   }
   & h3{
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     text-align: center;
   }
 }
@@ -83,19 +88,7 @@ h2{
   font-size: 4vw;
   font-weight: 800;
   margin-bottom: 1rem;
-}
-
-@media screen and (max-width: 767px){
-  .content{
-    &> h1{
-      font-size: 3rem;
-    }
-    &> h3{
-      font-size: 1.25rem;
-    }
-  }
-  
-  h2{
+  @media screen and (max-width: $mobile-size){
     font-size: 2rem;
   }
 }
@@ -260,5 +253,44 @@ main{
         }
       }
     }
+  }
+}
+
+.spinner{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+
+  width: 40px;
+  height: 40px;
+  
+  &::before{
+    display: block;
+    content: '';
+    background-color: black;
+    animation: spin 1s infinite ease-out;
+  }
+}
+
+@keyframes spin{
+  0%{
+    transform: scaleX(1) scaleY(1);
+    transform-origin: 50% 0;
+  }
+  33%{
+    transform-origin: 50% 0;
+    transform: scaleX(1) scaleY(0);
+  }
+  50%{
+    transform: scaleX(0) scaleY(0);
+  }
+  66%{
+    transform-origin: 0 50%;
+    transform: scaleX(0) scaleY(1);
+  }
+  100%{
+    transform-origin: 0 50%;
+    transform: scaleX(1) scaleY(1);
   }
 }

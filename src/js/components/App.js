@@ -1,21 +1,28 @@
-import React, { useEffect, useState } from "react"
+import React, { useEffect, useState, useRef } from "react"
 import { Gallery } from "./Gallery"
 import { AboutMe } from "./AboutMe"
 import { Tools } from "./Tools"
 import { Footer } from "./Footer"
 import { FullImage } from "./FullImage"
-import header1 from '../../assets/1.png'
-import header2 from '../../assets/2.png'
-import header3 from '../../assets/3.png'
-import header4 from '../../assets/4.png'
-import header5 from '../../assets/5.png'
-import footer from '../../assets/background.png'
+import header1 from '../../assets/1.webp'
+import header2 from '../../assets/2.webp'
+import header3 from '../../assets/3.webp'
+import header4 from '../../assets/4.webp'
+import header5 from '../../assets/5.webp'
+import footer from '../../assets/background.webp'
 
 export const App = () => {
 
   useEffect(() => setupAnimationsOnScroll(), [])
 
   const [fullImage, setFullImage] = useState(null)
+  // const [isLoading, setIsLoading] = useState(true)
+  // const assetsCounter = useRef(0)
+
+  // const assetLoaded = () => {
+  //   assetsCounter.current += 1
+
+  // }
 
   const setupAnimationsOnScroll = () => {
     const scroll =
@@ -45,6 +52,7 @@ export const App = () => {
   //fullImage out of container due to problems with position: fixed in div with perspective property set
   return (
     <div>
+      <div className="spinner"></div>
       {fullImage && <FullImage url={fullImage} hideFullImage={() => setFullImage(null)}></FullImage>}
       <div className="content">
         <div className="headings">
