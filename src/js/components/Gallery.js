@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { apiKey, userId, photosetId } from "./config"
 import { Art } from "./Art"
-import { FullImage } from "./FullImage"
 
 export const Gallery = (props) => {
 
@@ -56,13 +55,12 @@ export const Gallery = (props) => {
 
   !arts.length && fetchPhotos()
 
-  return (<div>
-    {fullImage && <FullImage url={fullImage} hideFullImage={() => setFullImage(null)}></FullImage>}
+  return (
     <section className="gallery">
       {arts.map(art =>
         <Art key={art.id} url={createArtUrl(art)} displayFullImage={(url) => { !fullImage && setFullImage(url) }} title={art.title}></Art>
       )}
     </section>
-  </div >)
+  )
 
 }

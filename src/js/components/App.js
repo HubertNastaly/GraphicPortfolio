@@ -1,8 +1,9 @@
-import React, { useEffect } from "react"
+import React, { useEffect, useState } from "react"
 import { Gallery } from "./Gallery"
 import { AboutMe } from "./AboutMe"
 import { Tools } from "./Tools"
 import { Footer } from "./Footer"
+import { FullImage } from "./FullImage"
 import header1 from '../../assets/1.png'
 import header2 from '../../assets/2.png'
 import header3 from '../../assets/3.png'
@@ -41,22 +42,29 @@ export const App = () => {
     scroll(checkArtsToShow)
   }
 
+  //fullImage out of container due to problems with position: fixed in div with perspective property set
   return (
     <div>
-      <h1>PORTFOLIO</h1>
-      <img src={header1}></img>
-      <img src={header2}></img>
-      <img src={header3}></img>
-      <img src={header4}></img>
-      <img src={header5}></img>
-      <div className="mainWrapper">
-        <main>
-          <AboutMe></AboutMe>
-          <Gallery fullImage={fullImage} setFullImage={setFullImage}></Gallery>
-          <Tools></Tools>
-        </main>
-        <Footer></Footer>
-        <img src={footer}></img>
+      {fullImage && <FullImage url={fullImage} hideFullImage={() => setFullImage(null)}></FullImage>}
+      <div className="content">
+        <div className="headings">
+          <h1>PORTFOLIO</h1>
+          <h3>HUBERT NASTAŁY</h3>
+        </div>
+        <img src={header1}></img>
+        <img src={header2}></img>
+        <img src={header3}></img>
+        <img src={header4}></img>
+        <img src={header5}></img>
+        <div className="mainWrapper">
+          <main>
+            <AboutMe></AboutMe>
+            <Gallery fullImage={fullImage} setFullImage={setFullImage}></Gallery>
+            <Tools></Tools>
+          </main>
+          <Footer></Footer>
+          <img src={footer}></img>
+        </div>
       </div>
     </div>
   )

@@ -24,8 +24,13 @@ $header-height: calc( #{$init-header-height}px * #{$header-scale} );
   width: 100%;
 }
 
-// wrapper for whole page
 #container > div{
+  overflow: hidden;
+}
+
+
+// wrapper for the content
+.content{
   width: 100%;
   height: 100vh;
 
@@ -35,7 +40,7 @@ $header-height: calc( #{$init-header-height}px * #{$header-scale} );
   perspective: $perspective;
   perspective-origin: 0 0;
 
-  &> img {
+  &> img, & .headings{
     position: absolute;
     transform-origin: 0 0;
   }
@@ -59,26 +64,18 @@ $header-height: calc( #{$init-header-height}px * #{$header-scale} );
     z-index: -5;
     transform: translateZ(-$perspective * 2) scale( calc( (1 + 2) * #{$header-scale}) );
   }
-  &> h1{
-    perspective: none;
-    position: fixed;
-    top: 100px;
-    left: 50px;
-    display: inline-block;
-    font-size: 10vw;
-    z-index: -3;
-  }
-  // fog
-  &::before{
-    content: '';
-    display: block;
+  & .headings{
     width: 100%;
-    height: $header-height;
-    position: absolute;
-    top: $header-height;
-    background: linear-gradient(rgba(240,240,240,0), $bg-color);
-    transform-origin: 0 0;
-    transform: translateZ(-$perspective * 0) scale( calc( (1 + 0) ) );
+    z-index: -4;
+    transform: translateZ(-$perspective * 3) scale( calc( (1 + 3) ) );
+  }
+  & h1{
+    font-size: 4rem;
+    text-align: center;
+  }
+  & h3{
+    font-size: 1.5rem;
+    text-align: center;
   }
 }
 
@@ -89,6 +86,15 @@ h2{
 }
 
 @media screen and (max-width: 767px){
+  .content{
+    &> h1{
+      font-size: 3rem;
+    }
+    &> h3{
+      font-size: 1.25rem;
+    }
+  }
+  
   h2{
     font-size: 2rem;
   }
@@ -120,6 +126,7 @@ p{
   position: relative;
   opacity: 0;
   transition: all 0.3s ease-out;
+
   &:nth-child(3n+1){
     transform: translateX(-50px);
   }
@@ -147,19 +154,22 @@ p{
   &:hover > img{
     transform: translate(-50%,-50%) scale(0.7);
   }
-  &:hover > h3{
+  &:hover > h5{
     opacity: 1;
   }
-  // &::before{
-  //   content: '';
-  //   display: block;
-  //   z-index: 1;
-  //   width: 100%;
-  //   height: 100px;
-  //   background-color: black;
-  //   opacity: 0.4;
-  // }
-  &> h3{
+  &:hover::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    opacity: 0.5;
+  }
+  &> h5{
     position: absolute;
     z-index: 1;
     top: 50%;
@@ -168,6 +178,7 @@ p{
     text-align: center;
     color: white;
     font-weight: 400;
+    font-size: 1.25rem;
     opacity: 0;
   }
 }
