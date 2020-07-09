@@ -1,6 +1,6 @@
 import React from 'react';
-import psIcon from '../../assets/webp/big/photoshop_icon.webp'
-import adIcon from '../../assets/webp/big/affinity_designer_icon.webp'
+import psIcon from '../../assets/webp/photoshop_icon.webp'
+import adIcon from '../../assets/webp/affinity_designer_icon.webp'
 
 export const Tools = () => {
   return (

@@ -5,7 +5,6 @@ import { Art } from "./Art"
 export const Gallery = (props) => {
 
   const [arts, setArts] = useState([])
-  // const [fullImage, setFullImage] = useState(null)
   const { fullImage, setFullImage } = props
 
   const createPhotosetUrl = () => {
@@ -62,5 +61,4 @@ export const Gallery = (props) => {
       )}
     </section>
   )
-
 }

@@ -8,9 +8,7 @@ export const FullImage = (props) => {
     e.stopPropagation()
     hideFullImage()
   }
-
   return (
     <img src={url} className="fullImage" onClick={handleClick}></img>
   )
-
 }
