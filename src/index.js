@@ -6,6 +6,7 @@ import "./style.scss"
 const adjustHeader = () => {
   const root = document.documentElement
   root.style.setProperty("--client-width", root.clientWidth)
+  root.style.setProperty("--client-height", root.clientHeight)
 }
 
 window.addEventListener("resize", adjustHeader)

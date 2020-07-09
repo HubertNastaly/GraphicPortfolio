@@ -6,9 +6,6 @@ $perspective: 100px;
 $init-header-width: 1920;
 $init-header-height: 1080;
 
-$header-scale: calc( var(--client-width) / #{$init-header-width} );
-$header-height: calc( #{$init-header-height}px * #{$header-scale} );
-
 $mobile-size: 767px;
 
 * {
@@ -22,6 +19,9 @@ $mobile-size: 767px;
   font-weight: 400;
   color: $text-color;
   --client-width: $init-header-width;
+  --client-height: $init-header-height;
+  --header-scale: max( var(--client-width) / #{$init-header-width}, var(--client-height) / #{$init-header-height} );
+  --header-height: calc( #{$init-header-height}px * var(--header-scale) );
   background-color: $bg-color;
 }
 
@@ -45,34 +45,34 @@ $mobile-size: 767px;
   perspective: $perspective;
   perspective-origin: 0 0;
 
-  &> img, & .headings{
+  &> picture, & .headings{
     position: absolute;
     transform-origin: 0 0;
   }
-  &> img:nth-of-type(1){
+  &> picture:nth-of-type(1){
     z-index: -1;
-    transform: translateZ(-$perspective * 0.2) scale( calc( (1 + 0.2) * #{$header-scale}) );
+    transform: translateZ(-$perspective * 0.2) scale( calc( (1 + 0.2) * var(--header-scale)) );
   }
-  &> img:nth-of-type(2){
+  &> picture:nth-of-type(2){
     z-index: -2;
-    transform: translateZ(-$perspective * 0.5) scale( calc( (1 + 0.5) * #{$header-scale}) );
+    transform: translateZ(-$perspective * 0.5) scale( calc( (1 + 0.5) * var(--header-scale)) );
   }
-  &> img:nth-of-type(3){
+  &> picture:nth-of-type(3){
     z-index: -3;
-    transform: translateZ(-$perspective * 1) scale( calc( (1 + 1) * #{$header-scale}) );
+    transform: translateZ(-$perspective * 1) scale( calc( (1 + 1) * var(--header-scale)) );
   }
-  &> img:nth-of-type(4){
+  &> picture:nth-of-type(4){
     z-index: -4;
-    transform: translateZ(-$perspective * 1.5) scale( calc( (1 + 1.5) * #{$header-scale}) );
+    transform: translateZ(-$perspective * 1.5) scale( calc( (1 + 1.5) * var(--header-scale)) );
   }
-  &> img:nth-of-type(5){
+  &> picture:nth-of-type(5){
     z-index: -5;
-    transform: translateZ(-$perspective * 2) scale( calc( (1 + 2) * #{$header-scale}) );
+    transform: translateZ(-$perspective * 2) scale( calc( (1 + 2) * var(--header-scale)) );
   }
   & .headings{
     width: 100%;
     z-index: -4;
-    transform: translateZ(-$perspective * 3) scale( calc( (1 + 3) ) );
+    transform: translateZ(-$perspective * 3) scale( calc( (1 + 3) ) ) translateY(10px);
   }
   & h1{
     font-size: 3rem;
@@ -113,7 +113,7 @@ p{
 
 .art{
   width: 100%;
-  padding-top: 150%;
+  padding-top: 50vh;
   box-sizing: border-box;
   overflow: hidden;
   position: relative;
@@ -211,16 +211,19 @@ main{
   background-color: $bg-color;
   width: 100%;
   position: absolute;
-  margin-top: $header-height;
+  margin-top: var(--header-height);
   z-index: 0;
   overflow: hidden;
 
-  &> img{
+  &> picture{
     box-shadow: inset 0 40px 0 $bg-color;
     width: 100%;
     position: absolute;
     bottom: -20vw;
     z-index: -1;
+    &> img{
+      width: 100%;
+    }
   }
 }
 

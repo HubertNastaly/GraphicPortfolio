@@ -35,6 +35,8 @@ module.exports = {
           'css-loader',
           // Compiles Sass to CSS
           'sass-loader',
+          // Autoprefixer
+          'postcss-loader'
         ],
       },
       {

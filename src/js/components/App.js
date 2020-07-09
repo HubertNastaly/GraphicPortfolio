@@ -4,25 +4,27 @@ import { AboutMe } from "./AboutMe"
 import { Tools } from "./Tools"
 import { Footer } from "./Footer"
 import { FullImage } from "./FullImage"
-import header1 from '../../assets/1.webp'
-import header2 from '../../assets/2.webp'
-import header3 from '../../assets/3.webp'
-import header4 from '../../assets/4.webp'
-import header5 from '../../assets/5.webp'
-import footer from '../../assets/background.webp'
+import { ThemePicture } from "./ThemePicture"
+
+import header1BigWebp from '../../assets/webp/big/1.webp'
+import header2BigWebp from '../../assets/webp/big/2.webp'
+import header3BigWebp from '../../assets/webp/big/3.webp'
+import header4BigWebp from '../../assets/webp/big/4.webp'
+import header5BigWebp from '../../assets/webp/big/5.webp'
+import footerBigWebp from '../../assets/webp/big/background.webp'
+
+import header1BigPng from '../../assets/png/big/1.png'
+import header2BigPng from '../../assets/png/big/2.png'
+import header3BigPng from '../../assets/png/big/3.png'
+import header4BigPng from '../../assets/png/big/4.png'
+import header5BigPng from '../../assets/png/big/5.png'
+import footerBigPng from '../../assets/png/big/background.png'
 
 export const App = () => {
 
   useEffect(() => setupAnimationsOnScroll(), [])
 
   const [fullImage, setFullImage] = useState(null)
-  // const [isLoading, setIsLoading] = useState(true)
-  // const assetsCounter = useRef(0)
-
-  // const assetLoaded = () => {
-  //   assetsCounter.current += 1
-
-  // }
 
   const setupAnimationsOnScroll = () => {
     const scroll =
@@ -59,11 +61,16 @@ export const App = () => {
           <h1>PORTFOLIO</h1>
           <h3>HUBERT NASTAŁY</h3>
         </div>
-        <img src={header1}></img>
-        <img src={header2}></img>
-        <img src={header3}></img>
-        <img src={header4}></img>
-        <img src={header5}></img>
+        <ThemePicture webp={header1BigWebp} png={header1BigPng}></ThemePicture>
+        <ThemePicture webp={header2BigWebp} png={header2BigPng}></ThemePicture>
+        <ThemePicture webp={header3BigWebp} png={header3BigPng}></ThemePicture>
+        <ThemePicture webp={header4BigWebp} png={header4BigPng}></ThemePicture>
+        <ThemePicture webp={header5BigWebp} png={header5BigPng}></ThemePicture>
+        {/* <img src={header1BigWebp}></img>
+        <img src={header2BigWebp}></img>
+        <img src={header3BigWebp}></img>
+        <img src={header4BigWebp}></img>
+        <img src={header5BigWebp}></img> */}
         <div className="mainWrapper">
           <main>
             <AboutMe></AboutMe>
@@ -71,7 +78,7 @@ export const App = () => {
             <Tools></Tools>
           </main>
           <Footer></Footer>
-          <img src={footer}></img>
+          <ThemePicture webp={footerBigWebp} png={footerBigPng}></ThemePicture>
         </div>
       </div>
     </div>
