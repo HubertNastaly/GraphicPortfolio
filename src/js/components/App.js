@@ -13,12 +13,12 @@ import header4BigWebp from '../../assets/webp/big/4.webp'
 import header5BigWebp from '../../assets/webp/big/5.webp'
 import footerBigWebp from '../../assets/webp/big/background.webp'
 
-import header1BigPng from '../../assets/png/big/1.png'
-import header2BigPng from '../../assets/png/big/2.png'
-import header3BigPng from '../../assets/png/big/3.png'
-import header4BigPng from '../../assets/png/big/4.png'
-import header5BigPng from '../../assets/png/big/5.png'
-import footerBigPng from '../../assets/png/big/background.png'
+// import header1BigPng from '../../assets/png/big/1.png'
+// import header2BigPng from '../../assets/png/big/2.png'
+// import header3BigPng from '../../assets/png/big/3.png'
+// import header4BigPng from '../../assets/png/big/4.png'
+// import header5BigPng from '../../assets/png/big/5.png'
+// import footerBigPng from '../../assets/png/big/background.png'
 
 export const App = () => {
 
@@ -61,11 +61,11 @@ export const App = () => {
           <h1>PORTFOLIO</h1>
           <h3>HUBERT NASTAŁY</h3>
         </div>
-        <ThemePicture webp={header1BigWebp} png={header1BigPng}></ThemePicture>
-        <ThemePicture webp={header2BigWebp} png={header2BigPng}></ThemePicture>
-        <ThemePicture webp={header3BigWebp} png={header3BigPng}></ThemePicture>
-        <ThemePicture webp={header4BigWebp} png={header4BigPng}></ThemePicture>
-        <ThemePicture webp={header5BigWebp} png={header5BigPng}></ThemePicture>
+        <ThemePicture webp={header1BigWebp} ></ThemePicture>
+        <ThemePicture webp={header2BigWebp} ></ThemePicture>
+        <ThemePicture webp={header3BigWebp} ></ThemePicture>
+        <ThemePicture webp={header4BigWebp} ></ThemePicture>
+        <ThemePicture webp={header5BigWebp} ></ThemePicture>
         {/* <img src={header1BigWebp}></img>
         <img src={header2BigWebp}></img>
         <img src={header3BigWebp}></img>
@@ -78,7 +78,7 @@ export const App = () => {
             <Tools></Tools>
           </main>
           <Footer></Footer>
-          <ThemePicture webp={footerBigWebp} png={footerBigPng}></ThemePicture>
+          <ThemePicture webp={footerBigWebp}></ThemePicture>
         </div>
       </div>
     </div>
